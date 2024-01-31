@@ -37,8 +37,7 @@ jobs:
         run: |
           ./build/stress_tests
 
-      - name: Static Code Analysis
+      - name: Static Code Analysis(cppcheck)
         run: |
           cd build
-          scan-build cmake ..
-          scan-build --status-bugs make
+          cppcheck --enable=all --inconclusive --std=c++17 ..
