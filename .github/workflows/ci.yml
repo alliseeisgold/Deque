@@ -19,7 +19,7 @@ jobs:
       - name: Set up CMake and GTest
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake libgtest-dev
+          sudo apt-get install -y cmake libgtest-dev cppcheck
           sudo ln -s /usr/include/gtest /usr/include/gmock
 
       - name: Build
