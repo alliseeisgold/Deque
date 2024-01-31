@@ -1,0 +1,43 @@
+name: Deque
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        cmake: [3.21]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up CMake
+        uses: lukka/get-cmake@v0.3
+        with:
+          cmake-version: ${{ matrix.cmake }}
+
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          cmake --build .
+
+      - name: Run tests
+        run: |
+          cd build
+          ctest
+
+      - name: Run stress test
+        run: |
+          ./build/stress_test
+
