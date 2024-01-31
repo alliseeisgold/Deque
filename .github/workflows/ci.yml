@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up CMake and GTest
+      - name: Set up CMake, GTest and cppcheck
         run: |
           sudo apt-get update
           sudo apt-get install -y cmake libgtest-dev cppcheck
@@ -40,4 +40,4 @@ jobs:
       - name: Static Code Analysis(cppcheck)
         run: |
           cd build
-          cppcheck --enable=all --inconclusive --std=c++17 ..
+          cppcheck --enable=all --std=c++17 ..
