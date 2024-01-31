@@ -31,9 +31,8 @@ jobs:
 
       - name: Run tests
         run: |
-          cd build
-          ctest
+          main_tests
 
       - name: Run stress test
         run: |
-          ./build/stress_test
+          stress_tests
