@@ -31,8 +31,8 @@ jobs:
 
       - name: Run tests
         run: |
-          main_tests
+          ./main_tests
 
       - name: Run stress test
         run: |
-          stress_tests
+          ./stress_tests
