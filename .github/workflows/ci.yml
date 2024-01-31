@@ -29,10 +29,16 @@ jobs:
           cmake ..
           cmake --build .
 
-      - name: Run tests
+      - name: Running main tests
         run: |
           ./build/main_tests
 
-      - name: Run stress test
+      - name: Running stress tests
         run: |
           ./build/stress_tests
+
+      - name: Static Code Analysis
+        run: |
+          cd build
+          scan-build cmake ..
+          scan-build --status-bugs make
